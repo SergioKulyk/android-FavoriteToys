@@ -17,12 +17,22 @@ package com.example.android.favoritetoys;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView mToysListTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Find and set TextView by id "tv_toy_names".
+        mToysListTextView = findViewById(R.id.tv_toy_names);
+
+        // Get all toy name from the {@link ToyBox} and append it in new line.
+        for (String name : ToyBox.getToyNames()) {
+            mToysListTextView.append(name + "\n\n\n");
+        }
     }
 }
